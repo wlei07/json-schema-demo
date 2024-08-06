@@ -15,7 +15,7 @@
         "properties": {
           "code": {
             "type": "string",
-            "description": "Unique code of issuance location "
+            "description": "Unique code of issuance location"
           },
           "name": {
             "type": "string",
