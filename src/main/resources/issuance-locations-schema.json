@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zetes.com/issuance-locations-schema.json",
+
+
+  "title": "Issuance locations response message schema",
+  "description": "Issuance locations request should be done at least once a week on Mondays. Locations and codes change rarely. The provider of this service is SMIT. QTSP & Card manufacturer will do a weekly request. QTSP will ignore the notion of groupingCode and will only maintain issuanceLocations in the local database.",
+  "type": "object",
+  "properties": {
+    "issuanceLocations": {
+      "description": "List of all issuance locations",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Unique code of issuance location "
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of issuance location"
+          },
+          "grouping": {
+            "type": "string",
+            "description": "Some issuance locations are grouped together under one specific issuance location acting as a parent location. All Documents with the same groupingCode should be sent to groupingCode location. Not relevant for QTSP"
+          },
+          "reusable": {
+            "type": "boolean",
+            "description": "Indication whether to use reusable or disposable security packages. FALSE for disposable security packages. Not relevant for QTSP. This field is used when groupingCode is not present."
+          }
+        },
+        "required": ["code", "name", "reusable"]
+      }
+    },
+    "groupings": {
+      "description": "List of all groupings",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Unique code of issuance location. Not relevant for QTSP."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of issuance location. Not relevant for QTSP."
+          },
+          "reusable": {
+            "type": "boolean",
+            "description": "Indication whether to use reusable or disposable security packages. FALSE for disposable security packages. Not relevant for QTSP."
+          }
+        },
+        "required": ["code", "name", "reusable"]
+      },
+      "minItems": 0
+    }
+  },
+  "required": ["issuanceLocations", "groupings"]
+}

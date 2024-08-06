@@ -1,0 +1,17 @@
+{
+  "issuanceLocations": [
+    {
+      "code": "P01",
+      "name": "Mäeküla Selver",
+      "grouping": "P05",
+      "reusable": true
+    }
+  ],
+  "groupings": [
+    {
+      "code": "P05",
+      "name": " Dokumendikeskus",
+      "reusable": true
+    }
+  ]
+}
